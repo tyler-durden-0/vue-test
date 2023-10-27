@@ -34,7 +34,16 @@ export default {
                 body: ''
             }
         }
-    }
+    },
+    // пример как включить отслеживание по объекту(можно и массив)
+    // watch: {
+    //     post: {
+    //         handler(newValue) {
+    //             console.log('newValue', newValue)
+    //         },
+    //         deep: true
+    //     }
+    // }
 }
 </script>
 <style scoped>
