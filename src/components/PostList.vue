@@ -29,11 +29,11 @@ export default {
 <style scoped>
 .post-list-enter-active,
 .post-list-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 .post-list-enter-from,
 .post-list-leave-to {
   opacity: 0;
-  transform: translateX(30px);
+  transform: translateX(130px);
 }
 </style>
