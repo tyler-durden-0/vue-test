@@ -3,6 +3,10 @@
     <!-- С помощью интерполяции(как в Ангуляре) в шаблоне достаем значение поля компоненты -->
     <div class="app">
         <h1>Posts page</h1>
+        <my-input
+            v-model="searchQuery"
+            placeholder="Search..."
+        />
         <div class="app__btns">
             <my-button
                 @click="showDialog"
@@ -15,7 +19,7 @@
             ></my-select>
         </div>
         <post-list
-            :posts="sortedPosts"
+            :posts="sortedAndSearchedPosts"
             @remove="removePost"
             v-if="!isPostsLoading"
         />
@@ -49,6 +53,7 @@ export default {
             isPostsLoading: false,
             modificatorInput: '',
             selectedSort: '',
+            searchQuery: '',
             sortOptions: [
                 {value: 'title', name:'Name info'},
                 {value: 'body', name:'Body info'}
@@ -84,6 +89,9 @@ export default {
     computed: {
         sortedPosts() {
             return [...this.posts].sort((post1, post2) => post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))
+        },
+        sortedAndSearchedPosts() {
+            return this.sortedPosts.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()))
         }
     }
     // watch: {
